@@ -9,16 +9,18 @@
 # Turbo Frames knows how to fish out the relevant frame regardless.
 #
 # This module is automatically included in <tt>ActionController::Base</tt>.
-module Turbo::Frames::FrameRequest
-  extend ActiveSupport::Concern
+module Turbo::Frames
+  module FrameRequest
+    extend ActiveSupport::Concern
 
-  included do
-    layout -> { false if turbo_frame_request? }
-    etag { :frame if turbo_frame_request? }
-  end
-
-  private
-    def turbo_frame_request?
-      request.headers["Turbo-Frame"].present?
+    included do
+      layout -> { false if turbo_frame_request? }
+      etag { :frame if turbo_frame_request? }
     end
+
+    private
+      def turbo_frame_request?
+        request.headers["Turbo-Frame"].present?
+      end
+  end
 end

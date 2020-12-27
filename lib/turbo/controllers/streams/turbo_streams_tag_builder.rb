@@ -13,10 +13,12 @@
 #
 # This module adds that turbo_stream tag-builder object to all controllers. It's an instance of <tt>Turbo::Streams::TagBuilder</tt>
 # instantiated with the current <tt>view_context</tt>.
-module Turbo::Streams::TurboStreamsTagBuilder
-  private
+module Turbo::Streams
+  module TurboStreamsTagBuilder
+    private
 
-  def turbo_stream
-    Turbo::Streams::TagBuilder.new(view_context)
+    def turbo_stream
+      Turbo::Streams::TagBuilder.new(view_context)
+    end
   end
 end

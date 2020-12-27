@@ -1,8 +1,6 @@
 require "turbo/engine"
 
 module Turbo
-  extend ActiveSupport::Autoload
-
   class << self
     attr_writer :signed_stream_verifier_key
 
